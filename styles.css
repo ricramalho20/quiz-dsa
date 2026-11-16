@@ -1,0 +1,102 @@
+:root {
+  --fundo: #f1f5f6;
+  --papel: #ffffff;
+  --texto: #14293b;
+  --suave: #5b6b78;
+  --destaque: #0e7c86;
+  --destaque-escuro: #0a5d65;
+  --certo: #1f7a3d;
+  --certo-fundo: #e3f4e8;
+  --erro: #b3261e;
+  --erro-fundo: #fbe7e5;
+  --borda: #c9d5da;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: "Atkinson Hyperlegible", system-ui, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.app {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+h1 { margin: 0; font-size: 1.7rem; }
+h2 { font-size: 1.3rem; line-height: 1.35; }
+.subtitulo, .contador, .nota { color: var(--suave); }
+.subtitulo { margin: 4px 0 24px; }
+
+section {
+  background: var(--papel);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.opcoes { display: grid; gap: 10px; }
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible {
+  outline: 3px solid var(--destaque);
+  outline-offset: 2px;
+}
+
+.opcao {
+  min-height: 48px;
+  text-align: left;
+  padding: 10px 14px;
+  background: var(--papel);
+  color: var(--texto);
+  border: 2px solid var(--borda);
+  border-radius: 8px;
+}
+
+.opcao:hover:not(:disabled) { border-color: var(--destaque); }
+.opcao.marcada { border-color: var(--destaque); background: #e6f3f4; }
+.opcao.certa { border-color: var(--certo); background: var(--certo-fundo); }
+.opcao.errada { border-color: var(--erro); background: var(--erro-fundo); }
+.opcao:disabled { cursor: default; }
+
+.explicacao {
+  margin: 16px 0 0;
+  padding: 12px 14px;
+  background: var(--fundo);
+  border-radius: 8px;
+}
+
+.principal {
+  width: 100%;
+  min-height: 52px;
+  background: var(--destaque);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.principal:hover:not(:disabled) { background: var(--destaque-escuro); }
+.principal:disabled { background: #9db3b7; cursor: not-allowed; }
+
+.revisao { list-style: none; padding: 0; margin: 16px 0 24px; display: grid; gap: 8px; }
+.revisao li { padding: 10px 12px; border-radius: 8px; border-left: 5px solid; }
+.revisao .ok { background: var(--certo-fundo); border-color: var(--certo); }
+.revisao .erro { background: var(--erro-fundo); border-color: var(--erro); }
+
+@media (min-width: 700px) {
+  .app { padding-top: 48px; }
+  .principal { width: auto; padding: 0 32px; }
+  h1 { font-size: 2rem; }
+}
